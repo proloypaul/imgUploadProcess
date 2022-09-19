@@ -1,0 +1,50 @@
+.fromPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    color: #fff;
+}
+
+.fromContainer{
+    background-color: #000000;
+    padding: 30px 60px;
+    text-align: center;
+    border: 0;
+    border-radius: 10px;
+}
+.fromContainer h1{
+    background: gray;
+    width: 100%;
+    padding: 5px 30px;
+    border:0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.fromContainer .from{
+    text-align: center;
+}
+.from input{
+    padding: 10px 5px;
+    margin: 5px 0px;
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.submitBtn{
+    text-align: left;
+}
+.submitBtn button{
+    padding: 7px 40px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    border:0;
+    background: gray;
+    color: #fff;
+    text-align: left;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

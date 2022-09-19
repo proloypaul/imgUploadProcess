@@ -2,7 +2,7 @@ import './App.css';
 import Addimg from '../src/Component/AddImg/Addimg';
 function App() {
   return (
-    <div className="App">
+    <div>
       <Addimg></Addimg>
     </div>
   );
