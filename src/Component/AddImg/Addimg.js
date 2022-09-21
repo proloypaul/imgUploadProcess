@@ -4,27 +4,41 @@ const Addimg = () => {
     const defaultData = {date: "10:05"}
     const [storeData, setStoreData] = useState(defaultData);
 
+    const handleImage = async (e) => {
+        // const imageFile = e.target.files[0];
+        // console.log(imageFile);
+        let imageData = new FormData();
+        imageData.set("key", "06a916692ea087d185221539196ef3a5");
+        imageData.append("image", e.target.files[0]);
+        const res = await window.fetch("https://api.imgbb.com/1/upload", {
+            method: "POST",
+            body: imageData,
+        })
+
+        const data = await res.json();
+        // console.log(data);
+        console.log(data.data.url_viewer)
+        setStoreData({image: data.data.url_viewer});
+
+    }
     const collectData = (event) => {
         const field = event.target.name;
         const value = event.target.value;
         let allStoreData = {...storeData};
         allStoreData[field] = value; 
         setStoreData(allStoreData);
-        console.log(storeData.image);
+        // console.log(storeData.image);
     }
     const handleData = () => {
-        // let imageData = new FormData()
-        // imageData.set("key", "06a916692ea087d185221539196ef3a5");
-        // imageData.append("image", storeData.image);
-        // console.log(imageData);
+        console.log(storeData);
     }
     return (
         <div className='fromPage'>
             <div className='fromContainer'>
-                <h1>Add img section</h1>
+                <h1>Hey, Img Uploader</h1>
                 <form onClick={() => handleData()} className="from">
                     <div>
-                        <input type="file" name="image" required onBlur={collectData}/>
+                        <input type="file" name="image" required onChange={handleImage}/>
                     </div>
                     <div>
                         <input type="text" name="name" placeholder="Enter your Name" required onBlur={collectData} />
