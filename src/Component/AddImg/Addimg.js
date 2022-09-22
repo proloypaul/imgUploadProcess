@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
+import {CgProfile} from 'react-icons/cg';
 import "./Addimg.css";
 const Addimg = () => {
     const defaultData = {date: "10:05"}
     const [storeData, setStoreData] = useState(defaultData);
+    const [imageUpload, setImageUpload] = useState(false);
 
     const handleImage = async (e) => {
         // const imageFile = e.target.files[0];
         // console.log(imageFile);
+        setImageUpload(false);
         let imageData = new FormData();
         imageData.set("key", "06a916692ea087d185221539196ef3a5");
         imageData.append("image", e.target.files[0]);
@@ -14,12 +17,11 @@ const Addimg = () => {
             method: "POST",
             body: imageData,
         })
-
         const data = await res.json();
         // console.log(data);
         console.log(data.data.url_viewer)
         setStoreData({image: data.data.url_viewer});
-
+        setImageUpload(true);
     }
     const collectData = (event) => {
         const field = event.target.name;
@@ -29,7 +31,8 @@ const Addimg = () => {
         setStoreData(allStoreData);
         // console.log(storeData.image);
     }
-    const handleData = () => {
+    const handleData = (e) => {
+        e.preventDefault();
         console.log(storeData);
     }
     return (
@@ -37,8 +40,12 @@ const Addimg = () => {
             <div className='fromContainer'>
                 <h1>Hey, Img Uploader</h1>
                 <form onClick={() => handleData()} className="from">
-                    <div>
+                    <label className='fileUpload'>
                         <input type="file" name="image" required onChange={handleImage}/>
+                        <span><CgProfile/></span>
+                    </label>
+                    <div>
+                        {imageUpload?<h4>Image Upload successful!</h4> :<h4>Image upload here</h4>}
                     </div>
                     <div>
                         <input type="text" name="name" placeholder="Enter your Name" required onBlur={collectData} />
