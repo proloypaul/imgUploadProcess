@@ -33,6 +33,16 @@ const Addimg = () => {
     }
     const handleData = (e) => {
         e.preventDefault();
+
+        fetch(``, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(storeData)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
         console.log(storeData);
     }
     return (
@@ -45,7 +55,7 @@ const Addimg = () => {
                         <span><CgProfile/></span>
                     </label>
                     <div>
-                        {imageUpload?<h4>Image Upload successful!</h4> :<h4>Image upload here</h4>}
+                        {imageUpload?<h4 className='successfulMsg'>Image Uploaded successfully!</h4> :<h4>Image upload here</h4>}
                     </div>
                     <div>
                         <input type="text" name="name" placeholder="Enter your Name" required onBlur={collectData} />

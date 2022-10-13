@@ -38,6 +38,9 @@
 .from .fileUpload span{
     font-size: 80px;
 }
+.from .successfulMsg{
+    color: green;
+}
 .from input[type ="file"]{
     display: none;
 
